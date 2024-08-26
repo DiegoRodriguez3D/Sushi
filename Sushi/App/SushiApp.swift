@@ -11,7 +11,7 @@ import SwiftUI
 struct SushiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SushiView()
         }
     }
 }
