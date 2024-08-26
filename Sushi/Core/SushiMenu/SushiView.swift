@@ -6,23 +6,44 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SushiView: View {
-    
-    @StateObject private var viewModel = SushiViewModel()
-    
+
+    @StateObject private var viewModel: SushiViewModel
+
+    init(context: ModelContext) {
+        _viewModel = StateObject(wrappedValue: SushiViewModel(context: context))
+    }
+
     var body: some View {
-        List(viewModel.items) { item in
-            ItemRow(item: item)
-        }
-        .listStyle(.plain)
-        .onAppear {
-            viewModel.fetchSushiItems()
+        NavigationView {
+            VStack(alignment: .leading) {
+                Text("Sushi App")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding([.top, .horizontal])
+
+                List(viewModel.items) { item in
+                    NavigationLink(destination: SushiDetailView(item: item)) {
+                        ItemRow(item: item)
+                    }
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(.none)
+                    .listRowSpacing(1)
+                }
+                .listStyle(.plain)
+            }
+            .onAppear {
+                viewModel.fetchSushiItems()
+            }
         }
     }
 }
 
 #Preview {
-    SushiView()
+    let modelContainer = try! ModelContainer(for: SushiItem.self)
+    
+    return SushiView(context: modelContainer.mainContext)
+           .modelContainer(for: [SushiItem.self])
 }
-

@@ -18,18 +18,20 @@ struct ItemRow: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 70)
                 .cornerRadius(10)
+                .padding(.trailing, 10)
             
             Text(item.name)
+                .font(.headline)
                 .fontWeight(.bold)
             
             Spacer()
-            
-            Text(item.price + "€")
         }
-        .listRowSeparator(.hidden)
+        .background(Color(.systemGray6))
+        .cornerRadius(15)
     }
 }
 
 #Preview {
-    ItemRow(item: SushiItem(name: "Test", price: "2.99", imageName: "tako-sushi"))
+    ItemRow(item: SushiItem(name: "Test", price: "2.99", imageName: "tako-sushi", desc: "test description"))
 }
+

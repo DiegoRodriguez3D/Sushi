@@ -15,6 +15,7 @@
 		F10B6AB42C7C9602009C2018 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B6AB32C7C9602009C2018 /* DataService.swift */; };
 		F10B6ABD2C7C9A84009C2018 /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B6ABC2C7C9A84009C2018 /* ItemRow.swift */; };
 		F10B6AC02C7C9B89009C2018 /* SushiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B6ABF2C7C9B89009C2018 /* SushiViewModel.swift */; };
+		F10B6AC32C7CA1D6009C2018 /* SushiDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B6AC22C7CA1D6009C2018 /* SushiDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		F10B6AB32C7C9602009C2018 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		F10B6ABC2C7C9A84009C2018 /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		F10B6ABF2C7C9B89009C2018 /* SushiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushiViewModel.swift; sourceTree = "<group>"; };
+		F10B6AC22C7CA1D6009C2018 /* SushiDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushiDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				F10B6AB92C7C9A54009C2018 /* Components */,
+				F10B6AC12C7CA1C7009C2018 /* SushiDetail */,
 				F10B6ABE2C7C9B29009C2018 /* SushiMenu */,
 			);
 			path = Core;
@@ -125,6 +128,14 @@
 				F10B6ABF2C7C9B89009C2018 /* SushiViewModel.swift */,
 			);
 			path = SushiMenu;
+			sourceTree = "<group>";
+		};
+		F10B6AC12C7CA1C7009C2018 /* SushiDetail */ = {
+			isa = PBXGroup;
+			children = (
+				F10B6AC22C7CA1D6009C2018 /* SushiDetailView.swift */,
+			);
+			path = SushiDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F10B6AC32C7CA1D6009C2018 /* SushiDetailView.swift in Sources */,
 				F10B6AA62C7C83A8009C2018 /* SushiView.swift in Sources */,
 				F10B6AB22C7C8772009C2018 /* SushiItem.swift in Sources */,
 				F10B6ABD2C7C9A84009C2018 /* ItemRow.swift in Sources */,
