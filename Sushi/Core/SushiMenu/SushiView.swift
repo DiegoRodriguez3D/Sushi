@@ -11,12 +11,12 @@ import SwiftData
 struct SushiView: View {
 
     @State private var showingAddSushiView = false
-    
-    @Environment(\.modelContext) private var context
-    
-    //Carga la lista de sushi directamente desde SwiftData
-    @Query(sort: \SushiItem.name, order: .forward) private var items: [SushiItem]
+    @StateObject private var viewModel: SushiViewModel
 
+    init(dataService: DataService) {
+        _viewModel = StateObject(wrappedValue: SushiViewModel(dataService: dataService))
+    }
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -25,8 +25,8 @@ struct SushiView: View {
                     .fontWeight(.bold)
                     .padding([.top, .horizontal])
 
-                List(items) { item in
-                    NavigationLink(destination: SushiDetailView(item: item)) {
+                List(viewModel.items) { item in
+                    NavigationLink(destination: SushiDetailView(viewModel: SushiDetailViewModel(item: item, dataService: viewModel.dataService))) {
                         ItemRow(item: item)
                     }
                     .listRowSeparator(.hidden)
@@ -36,19 +36,24 @@ struct SushiView: View {
                 .listStyle(.plain)
             }
             .toolbar {
-                 ToolbarItem(placement: .navigationBarTrailing) {
-                     Button(action: {
-                         showingAddSushiView = true
-                     }) {
-                         Image(systemName: "plus")
-                     }
-                 }
-             }
-            .sheet(isPresented: $showingAddSushiView) {
-                AddSushiView(context: context)
-                    .modelContainer(for: [SushiItem.self])
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showingAddSushiView = true
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
             }
-
+            .sheet(isPresented: $showingAddSushiView) {
+                AddSushiView(
+                    viewModel: AddSushiViewModel(dataService: viewModel.dataService),
+                    sushiViewModel: viewModel
+                )
+                .modelContainer(for: [SushiItem.self])
+            }
+            .onAppear{
+                viewModel.fetchSushiItems()
+            }
         }
     }
 }
@@ -56,6 +61,6 @@ struct SushiView: View {
 #Preview {
     let modelContainer = try! ModelContainer(for: SushiItem.self)
     
-    return SushiView()
+    return SushiView(dataService: DataService(context: modelContainer.mainContext))
         .modelContainer(for: [SushiItem.self])
 }

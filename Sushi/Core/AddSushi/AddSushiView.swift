@@ -7,15 +7,16 @@
 
 import SwiftUI
 import PhotosUI
-import SwiftData
 
 struct AddSushiView: View {
     @Environment(\.dismiss) var dismiss
 
-    @StateObject private var viewModel: AddSushiViewModel
+    @ObservedObject var viewModel: AddSushiViewModel
+    @ObservedObject var sushiViewModel: SushiViewModel
 
-    init(context: ModelContext) {
-        _viewModel = StateObject(wrappedValue: AddSushiViewModel(context: context))
+    init(viewModel: AddSushiViewModel, sushiViewModel: SushiViewModel) {
+        self.viewModel = viewModel
+        self.sushiViewModel = sushiViewModel
     }
 
     var body: some View {
@@ -49,6 +50,7 @@ struct AddSushiView: View {
                 
                 Button("Add Sushi") {
                     viewModel.addSushi()
+                    sushiViewModel.fetchSushiItems()
                     dismiss()
                 }
                 .disabled(!viewModel.isFormValid())

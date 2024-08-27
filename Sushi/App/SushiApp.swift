@@ -27,7 +27,7 @@ struct SushiApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SushiView()
+            SushiView(dataService: DataService(context: modelContainer.mainContext))
                 .modelContainer(for: SushiItem.self)
         }
     }

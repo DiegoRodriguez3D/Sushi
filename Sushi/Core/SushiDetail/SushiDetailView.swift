@@ -8,28 +8,29 @@
 import SwiftUI
 
 struct SushiDetailView: View {
-    var item: SushiItem
+    @StateObject var viewModel: SushiDetailViewModel
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 ZStack {
-                    if let uiImage = ImageHelper.loadImage(named: item.imageName) {
-                                        Image(uiImage: uiImage)
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(maxWidth: .infinity)
-                                            .cornerRadius(10)
-                                            .shadow(radius: 10)
-                                            .padding()
-                                    }
+                    if let uiImage = ImageHelper.loadImage(named: viewModel.item.imageName) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: .infinity)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
+                            .padding()
+                    }
                     VStack {
                         Spacer()
 
                         HStack {
                             Spacer()
 
-                            Text(item.price + "€")
+                            Text(viewModel.item.price + "€")
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .padding(4)
@@ -41,17 +42,24 @@ struct SushiDetailView: View {
                     .padding()
                 }
 
-                Text(item.desc)
+                Text(viewModel.item.desc)
                     .font(.body)
                     .padding()
 
             }
         }
-        .navigationTitle(item.name)
+        .navigationTitle(viewModel.item.name)
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    viewModel.deleteSushi()
+                    dismiss()  // Cerrar la vista después de eliminar
+                }) {
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                }
+            }
+        }
     }
-}
-
-#Preview {
-    SushiDetailView(item: SushiItem(name: "Test", price: "2.99", imageName: "tako-sushi", desc: "This is a test description."))
 }

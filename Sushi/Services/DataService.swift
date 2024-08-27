@@ -38,6 +38,15 @@ struct DataService {
             print("Error saving data: \(error)")
         }
     }
+    
+    func deleteSushi(_ sushi: SushiItem) {
+        context.delete(sushi)
+        do {
+            try context.save()
+        } catch {
+            print("Error deleting sushi: \(error)")
+        }
+    }
 
     func populateInitialDataIfNeeded() {
         let fetchRequest = FetchDescriptor<SushiItem>()
