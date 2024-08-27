@@ -11,6 +11,7 @@ struct GalleryView: View {
     
     @State var photos = [String]()
     @State var isDetailVisible = false
+    @State var selectedImage = ""
     
     @EnvironmentObject var dataService: DataService
     
@@ -35,6 +36,7 @@ struct GalleryView: View {
                                 .frame(maxWidth: ((proxy.size.width-20)/3))
                                 .clipped()
                                 .onTapGesture {
+                                    selectedImage = image
                                     isDetailVisible.toggle()
                                 }
                         }
@@ -47,7 +49,7 @@ struct GalleryView: View {
             photos = dataService.getPhotos()
         }
         .sheet(isPresented: $isDetailVisible, content: {
-            GalleryDetailView()
+            GalleryDetailView(selectedImage: $selectedImage, isDetailVisible: $isDetailVisible)
         })
     }
 }

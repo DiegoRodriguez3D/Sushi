@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct GalleryDetailView: View {
+    @Binding var selectedImage : String
+    @Binding var isDetailVisible: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        ZStack {
+            Image(selectedImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        isDetailVisible.toggle()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.black)
+                            .scaleEffect(1)
+                    })
+                    .padding()
+                }
+                Spacer()
+            }
+        }
     }
 }
 
 #Preview {
-    GalleryDetailView()
+    GalleryDetailView(selectedImage: Binding.constant("gallery1"), isDetailVisible: Binding.constant(true))
 }
