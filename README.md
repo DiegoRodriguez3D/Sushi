@@ -2,7 +2,7 @@
 
 ## Descripción
 
-**Sushi App** es una aplicación simple que permite a los usuarios navegar por una lista de deliciosos sushi, seleccionar cualquiera de ellos y ver una página de detalles con la imagen, el nombre, el precio y una descripción detallada del plato. Además también permite añadir nuevos platos a la lista 🍱
+**Sushi App** es una aplicación simple que permite a los usuarios navegar por una lista de deliciosos sushi, seleccionar cualquiera de ellos y ver una página de detalles con la imagen, el nombre, el precio y una descripción detallada del plato. Además también permite añadir o eliminar sushi de la lista 🍱
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -15,22 +15,24 @@
 
 - **Lista de Sushi**: Explora una lista de diferentes tipos de sushi con imágenes y nombres.
 - **Detalles del Sushi**: Al tocar un elemento de la lista, se accede a una vista de detalles con información completa sobre el sushi seleccionado.
-- **Agregar Nuevo Sushi**: Los usuarios pueden añadir nuevos elementos de sushi a la lista, incluyendo cargar una imagen desde su galería.
-- **Persistencia de Datos**: Los datos del menú se almacenan localmente utilizando SwiftData, lo que permite su disponibilidad sin conexión.
+- **Agregar Nuevo Sushi**: Los usuarios pueden añadir nuevos elementos de sushi a la lista.
+- **Eliminar Sushi**: Los usuarios pueden eliminar un sushi de la lista desde la pantalla de detalle.
 
 ## 📂 Estructura del Proyecto
 - **App**
   - `SushiApp.swift`: Punto de entrada de la aplicación.
-- **Core**
-  - **AddSushi**
-    - `AddSushiView.swift`: Contiene la vista para añadir un nuevo sushi, permitiendo al usuario ingresar detalles y seleccionar una imagen.
-    - `AddSushiViewModel.swift`: Maneja la lógica de negocio para agregar un nuevo sushi, incluida la carga de imágenes y la persistencia de datos.
-  - **Components**
-    - `ItemRow.swift`: Componente reutilizable que representa una fila de sushi en la lista.
-  - **SushiDetail**
-    - `SushiDetailView.swift`: Muestra los detalles completos del sushi seleccionado.
-  - **SushiMenu**
-    - `SushiView.swift`: Contiene la vista principal de la aplicación, mostrando la lista de sushi.
+- **Core**: Carpeta que contiene las pantallas principales.
+  - **AddSushi**:
+    - `AddSushiView.swift`: Vista para agregar un nuevo sushi.
+    - `AddSushiViewModel.swift`: Lógica de negocio para manejar la adición de sushi.
+  - **Components**:
+    - `ItemRow.swift`: Componente reutilizable que representa un sushi en la lista.
+  - **SushiDetail**:
+    - `SushiDetailView.swift`: Vista de detalles para un sushi.
+    - `SushiDetailViewModel.swift`: Lógica de negocio para manejar la eliminación de sushi desde la vista de detalles.
+  - **SushiMenu**:
+    - `SushiView.swift`: Vista principal que muestra la lista de sushis.
+    - `SushiViewModel.swift`: Lógica de negocio para manejar la lista de sushis.
 - **Helpers**
   - `ImageHelper.swift`: Proporciona funciones para cargar y guardar imágenes en el almacenamiento local.
 - **Models**
@@ -41,6 +43,6 @@
 
 ## 📸 Capturas de Pantalla
 ![Menú de Sushis](https://github.com/user-attachments/assets/b459cd9d-b4e1-4ba7-853b-eaf5c5206372)
-![Detalle](https://github.com/user-attachments/assets/c94cb04c-cd0f-4adb-a5f2-1364ba0a37ae)
+![Detalle](https://github.com/user-attachments/assets/631bec6f-3fb1-4c1a-91c9-6a2298ccc9b2)
 ![Añadir Sushi](https://github.com/user-attachments/assets/7dff2448-d2ea-4f9b-9922-f0288f8062c2)
 
