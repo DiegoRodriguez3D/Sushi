@@ -11,11 +11,9 @@ import SwiftData
 @main
 struct SushiApp: App {
 
-    // Crea una instancia del contenedor de modelos
     var modelContainer: ModelContainer
 
     init() {
-        // Configura el contenedor con el modelo `SushiItem`
         do {
             modelContainer = try ModelContainer(for: SushiItem.self)
         } catch {
@@ -29,7 +27,7 @@ struct SushiApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SushiView(context: modelContainer.mainContext)
+            SushiView()
                 .modelContainer(for: SushiItem.self)
         }
     }

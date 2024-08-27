@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import SwiftData
 
 class AddSushiViewModel: ObservableObject {
     @Published var name: String = ""
@@ -15,7 +16,11 @@ class AddSushiViewModel: ObservableObject {
     @Published var selectedImage: PhotosPickerItem? = nil
     @Published var imageData: Data? = nil
 
-    @Environment(\.modelContext) private var context
+    private var context: ModelContext
+
+    init(context: ModelContext) {
+        self.context = context
+    }
 
     func loadImage(from newItem: PhotosPickerItem?) async {
         guard let newItem = newItem else { return }
@@ -29,7 +34,8 @@ class AddSushiViewModel: ObservableObject {
     func addSushi() {
         guard let imageData = imageData else { return }
         let imageName = UUID().uuidString // Usamos un UUID único para el nombre de la imagen
-        ImageHelper.saveImage(imageData, withName: imageName)
+        ImageHelper.saveImage(imageData, withName: imageName, resizeTo: CGSize(width: 779, height: 642))
+
 
         let newSushi = SushiItem(name: name, price: price, imageName: imageName, desc: desc)
         context.insert(newSushi)

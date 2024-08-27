@@ -14,7 +14,6 @@
 		F10B6AB22C7C8772009C2018 /* SushiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B6AB12C7C8772009C2018 /* SushiItem.swift */; };
 		F10B6AB42C7C9602009C2018 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B6AB32C7C9602009C2018 /* DataService.swift */; };
 		F10B6ABD2C7C9A84009C2018 /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B6ABC2C7C9A84009C2018 /* ItemRow.swift */; };
-		F10B6AC02C7C9B89009C2018 /* SushiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B6ABF2C7C9B89009C2018 /* SushiViewModel.swift */; };
 		F10B6AC32C7CA1D6009C2018 /* SushiDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B6AC22C7CA1D6009C2018 /* SushiDetailView.swift */; };
 		F19956062C7DA64500E7D308 /* AddSushiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19956052C7DA64500E7D308 /* AddSushiView.swift */; };
 		F19956092C7DA7B000E7D308 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19956082C7DA7B000E7D308 /* ImageHelper.swift */; };
@@ -30,7 +29,6 @@
 		F10B6AB12C7C8772009C2018 /* SushiItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushiItem.swift; sourceTree = "<group>"; };
 		F10B6AB32C7C9602009C2018 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		F10B6ABC2C7C9A84009C2018 /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
-		F10B6ABF2C7C9B89009C2018 /* SushiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushiViewModel.swift; sourceTree = "<group>"; };
 		F10B6AC22C7CA1D6009C2018 /* SushiDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushiDetailView.swift; sourceTree = "<group>"; };
 		F19956052C7DA64500E7D308 /* AddSushiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSushiView.swift; sourceTree = "<group>"; };
 		F19956082C7DA7B000E7D308 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				F10B6AA52C7C83A8009C2018 /* SushiView.swift */,
-				F10B6ABF2C7C9B89009C2018 /* SushiViewModel.swift */,
 			);
 			path = SushiMenu;
 			sourceTree = "<group>";
@@ -241,7 +238,6 @@
 				F10B6AA42C7C83A8009C2018 /* SushiApp.swift in Sources */,
 				F19956062C7DA64500E7D308 /* AddSushiView.swift in Sources */,
 				F10B6AB42C7C9602009C2018 /* DataService.swift in Sources */,
-				F10B6AC02C7C9B89009C2018 /* SushiViewModel.swift in Sources */,
 				F199560B2C7DAA3900E7D308 /* AddSushiViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,10 +7,16 @@
 
 import SwiftUI
 import PhotosUI
+import SwiftData
 
 struct AddSushiView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject private var viewModel = AddSushiViewModel()
+
+    @StateObject private var viewModel: AddSushiViewModel
+
+    init(context: ModelContext) {
+        _viewModel = StateObject(wrappedValue: AddSushiViewModel(context: context))
+    }
 
     var body: some View {
         NavigationView {

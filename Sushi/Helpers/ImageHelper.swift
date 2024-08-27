@@ -19,9 +19,18 @@ struct ImageHelper {
         return UIImage(named: name)
     }
     
-    static func saveImage(_ imageData: Data, withName name: String) {
+    static func saveImage(_ imageData: Data, withName name: String, resizeTo size: CGSize? = nil) {
+        var finalData = imageData
+
+        // Si se proporciona un tamaño, redimensionar la imagen antes de guardarla
+        if let size = size, let image = UIImage(data: imageData) {
+            if let resizedImage = image.resize(to: size) {
+                finalData = resizedImage.jpegData(compressionQuality: 0.8) ?? imageData
+            }
+        }
+
         let fileURL = getDocumentsDirectory().appendingPathComponent(name)
-        try? imageData.write(to: fileURL)
+        try? finalData.write(to: fileURL)
     }
     
     private static func loadLocalImage(named name: String) -> UIImage? {
@@ -31,5 +40,15 @@ struct ImageHelper {
     
     private static func getDocumentsDirectory() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+}
+
+extension UIImage {
+    func resize(to size: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        self.draw(in: CGRect(origin: .zero, size: size))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizedImage
     }
 }

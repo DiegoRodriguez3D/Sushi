@@ -36,4 +36,3 @@ struct ItemRow: View {
 #Preview {
     ItemRow(item: SushiItem(name: "Test", price: "2.99", imageName: "tako-sushi", desc: "test description"))
 }
-

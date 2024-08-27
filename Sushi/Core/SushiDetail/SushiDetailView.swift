@@ -23,7 +23,6 @@ struct SushiDetailView: View {
                                             .shadow(radius: 10)
                                             .padding()
                                     }
-
                     VStack {
                         Spacer()
 

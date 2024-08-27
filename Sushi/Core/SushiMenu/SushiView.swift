@@ -10,15 +10,12 @@ import SwiftData
 
 struct SushiView: View {
 
-    @StateObject private var viewModel: SushiViewModel
     @State private var showingAddSushiView = false
     
+    @Environment(\.modelContext) private var context
+    
+    //Carga la lista de sushi directamente desde SwiftData
     @Query(sort: \SushiItem.name, order: .forward) private var items: [SushiItem]
-
-
-    init(context: ModelContext) {
-        _viewModel = StateObject(wrappedValue: SushiViewModel(context: context))
-    }
 
     var body: some View {
         NavigationView {
@@ -38,9 +35,6 @@ struct SushiView: View {
                 }
                 .listStyle(.plain)
             }
-            .onAppear {
-                viewModel.fetchSushiItems()
-            }
             .toolbar {
                  ToolbarItem(placement: .navigationBarTrailing) {
                      Button(action: {
@@ -50,10 +44,11 @@ struct SushiView: View {
                      }
                  }
              }
-             .sheet(isPresented: $showingAddSushiView) {
-                 AddSushiView()
-                     .modelContainer(for: [SushiItem.self])
-             }
+            .sheet(isPresented: $showingAddSushiView) {
+                AddSushiView(context: context)
+                    .modelContainer(for: [SushiItem.self])
+            }
+
         }
     }
 }
@@ -61,6 +56,6 @@ struct SushiView: View {
 #Preview {
     let modelContainer = try! ModelContainer(for: SushiItem.self)
     
-    return SushiView(context: modelContainer.mainContext)
-           .modelContainer(for: [SushiItem.self])
+    return SushiView()
+        .modelContainer(for: [SushiItem.self])
 }
