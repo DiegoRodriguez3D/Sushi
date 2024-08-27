@@ -10,15 +10,13 @@ import SwiftData
 
 class SushiViewModel: ObservableObject {
     @Published var items: [SushiItem] = []
-
-    var dataService: DataService
-
-    init(dataService: DataService) {
-        self.dataService = dataService
-        fetchSushiItems()
-    }
+    var dataService: DataService!
 
     func fetchSushiItems() {
-        self.items = dataService.getSushi()
+        guard let dataService = dataService else {
+            print("DataService not initialized.")
+            return
+        }
+        items = dataService.getSushi()
     }
 }

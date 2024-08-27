@@ -7,8 +7,9 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
-struct DataService {
+class DataService: ObservableObject {
     
     let context: ModelContext
 
@@ -46,6 +47,10 @@ struct DataService {
         } catch {
             print("Error deleting sushi: \(error)")
         }
+    }
+    
+    func getPhotos() -> [String] {
+        return ["gallery1", "gallery2", "gallery3", "gallery4", "gallery5", "gallery6", "gallery7", "gallery8", "gallery9", "gallery10", "gallery11"]
     }
 
     func populateInitialDataIfNeeded() {

@@ -10,7 +10,6 @@ import SwiftData
 
 @main
 struct SushiApp: App {
-
     var modelContainer: ModelContainer
 
     init() {
@@ -19,7 +18,7 @@ struct SushiApp: App {
         } catch {
             fatalError("No se pudo crear el ModelContainer: \(error)")
         }
-        
+
         // Popula los datos iniciales si es necesario
         let dataService = DataService(context: modelContainer.mainContext)
         dataService.populateInitialDataIfNeeded()
@@ -27,8 +26,8 @@ struct SushiApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SushiView(dataService: DataService(context: modelContainer.mainContext))
-                .modelContainer(for: SushiItem.self)
+            MainView()
+                .environmentObject(DataService(context: modelContainer.mainContext))
         }
     }
 }

@@ -12,9 +12,11 @@ struct SushiView: View {
 
     @State private var showingAddSushiView = false
     @StateObject private var viewModel: SushiViewModel
+    
+    @EnvironmentObject var dataService: DataService
 
-    init(dataService: DataService) {
-        _viewModel = StateObject(wrappedValue: SushiViewModel(dataService: dataService))
+    init() {
+        _viewModel = StateObject(wrappedValue: SushiViewModel())
     }
     
     var body: some View {
@@ -52,6 +54,7 @@ struct SushiView: View {
                 .modelContainer(for: [SushiItem.self])
             }
             .onAppear{
+                viewModel.dataService = dataService
                 viewModel.fetchSushiItems()
             }
         }
@@ -61,6 +64,6 @@ struct SushiView: View {
 #Preview {
     let modelContainer = try! ModelContainer(for: SushiItem.self)
     
-    return SushiView(dataService: DataService(context: modelContainer.mainContext))
+    return SushiView()
         .modelContainer(for: [SushiItem.self])
 }
