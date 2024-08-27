@@ -13,12 +13,14 @@ struct ItemRow: View {
     
     var body: some View {
         HStack {
-            Image(item.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 70)
-                .cornerRadius(10)
-                .padding(.trailing, 10)
+            if let uiImage = ImageHelper.loadImage(named: item.imageName) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 70)
+                    .cornerRadius(10)
+                    .padding(.trailing, 10)
+            }
             
             Text(item.name)
                 .font(.headline)

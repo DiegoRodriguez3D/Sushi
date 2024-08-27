@@ -14,13 +14,15 @@ struct SushiDetailView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 ZStack {
-                    Image(item.imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity)
-                        .cornerRadius(10)
-                        .shadow(radius: 10)
-                        .padding()
+                    if let uiImage = ImageHelper.loadImage(named: item.imageName) {
+                                        Image(uiImage: uiImage)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(maxWidth: .infinity)
+                                            .cornerRadius(10)
+                                            .shadow(radius: 10)
+                                            .padding()
+                                    }
 
                     VStack {
                         Spacer()
@@ -48,7 +50,6 @@ struct SushiDetailView: View {
         }
         .navigationTitle(item.name)
         .navigationBarTitleDisplayMode(.large)
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

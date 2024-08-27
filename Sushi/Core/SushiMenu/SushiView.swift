@@ -11,6 +11,10 @@ import SwiftData
 struct SushiView: View {
 
     @StateObject private var viewModel: SushiViewModel
+    @State private var showingAddSushiView = false
+    
+    @Query(sort: \SushiItem.name, order: .forward) private var items: [SushiItem]
+
 
     init(context: ModelContext) {
         _viewModel = StateObject(wrappedValue: SushiViewModel(context: context))
@@ -24,7 +28,7 @@ struct SushiView: View {
                     .fontWeight(.bold)
                     .padding([.top, .horizontal])
 
-                List(viewModel.items) { item in
+                List(items) { item in
                     NavigationLink(destination: SushiDetailView(item: item)) {
                         ItemRow(item: item)
                     }
@@ -37,6 +41,19 @@ struct SushiView: View {
             .onAppear {
                 viewModel.fetchSushiItems()
             }
+            .toolbar {
+                 ToolbarItem(placement: .navigationBarTrailing) {
+                     Button(action: {
+                         showingAddSushiView = true
+                     }) {
+                         Image(systemName: "plus")
+                     }
+                 }
+             }
+             .sheet(isPresented: $showingAddSushiView) {
+                 AddSushiView()
+                     .modelContainer(for: [SushiItem.self])
+             }
         }
     }
 }
