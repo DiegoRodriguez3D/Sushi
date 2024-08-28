@@ -24,7 +24,7 @@ struct AboutView: View {
                 VStack {
                     Text("Sushi App")
                         .fontWeight(.bold)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.red)
                     
                     + Text(" is your perfect companion for exploring and enjoying sushi. We're committed to providing a user-friendly experience that enhances your culinary journey.")
                 }

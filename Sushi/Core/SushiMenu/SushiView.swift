@@ -32,8 +32,7 @@ struct SushiView: View {
                         ItemRow(item: item)
                     }
                     .listRowSeparator(.hidden)
-                    .listRowInsets(.none)
-                    .listRowSpacing(1)
+                    
                 }
                 .listStyle(.plain)
             }

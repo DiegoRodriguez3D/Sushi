@@ -13,16 +13,17 @@ struct MainView: View {
             SushiView().tabItem {
                 Label("Sushi", systemImage: "fish.circle")
             }
-            AboutView().tabItem {
-                Label("About", systemImage: "info.circle")
-            }
             GalleryView().tabItem {
                 Label("Gallery", systemImage: "photo.artframe.circle")
             }
+            
+            AboutView().tabItem {
+                Label("About", systemImage: "info.circle")
+            }
         }
+        .tint(.red)
     }
 }
-
 
 #Preview {
     MainView()

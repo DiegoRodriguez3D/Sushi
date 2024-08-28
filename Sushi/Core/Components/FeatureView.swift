@@ -15,7 +15,7 @@ struct FeatureView: View {
     var body: some View {
         HStack(alignment: .top) {
             Image(systemName: icon)
-                .foregroundColor(.secondary)
+                .foregroundColor(.red)
                 .font(.title2)
                 .frame(width: 40, height: 40)
                 .padding(.top, 2)

@@ -14,7 +14,6 @@ struct SushiDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                ZStack {
                     if let uiImage = ImageHelper.loadImage(named: viewModel.item.imageName) {
                         Image(uiImage: uiImage)
                             .resizable()
@@ -24,23 +23,6 @@ struct SushiDetailView: View {
                             .shadow(radius: 10)
                             .padding()
                     }
-                    VStack {
-                        Spacer()
-
-                        HStack {
-                            Spacer()
-
-                            Text(viewModel.item.price + "€")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .padding(4)
-                                .foregroundColor(.white)
-                                .background(Color.green)
-                                .cornerRadius(8)
-                        }
-                    }
-                    .padding()
-                }
 
                 Text(viewModel.item.desc)
                     .font(.body)

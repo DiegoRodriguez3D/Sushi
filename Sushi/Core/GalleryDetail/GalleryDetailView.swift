@@ -26,7 +26,7 @@ struct GalleryDetailView: View {
                         isDetailVisible.toggle()
                     }, label: {
                         Image(systemName: "xmark")
-                            .foregroundColor(.black)
+                            .foregroundColor(.gray)
                             .scaleEffect(1)
                     })
                     .padding()

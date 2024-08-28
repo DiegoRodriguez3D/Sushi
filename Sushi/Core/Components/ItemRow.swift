@@ -16,20 +16,23 @@ struct ItemRow: View {
             if let uiImage = ImageHelper.loadImage(named: item.imageName) {
                 Image(uiImage: uiImage)
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 70)
-                    .cornerRadius(10)
-                    .padding(.trailing, 10)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(maxWidth: 130, maxHeight: 80)
+                    .clipped()
+                    .cornerRadius(14)
             }
+            
+            Spacer()
             
             Text(item.name)
                 .font(.headline)
                 .fontWeight(.bold)
+                .foregroundStyle(.black)
             
             Spacer()
         }
-        .background(Color(.systemGray6))
-        .cornerRadius(15)
+        .background(Color(red: 0.988, green: 0.918, blue: 0.906))
+        .cornerRadius(14)
     }
 }
 
