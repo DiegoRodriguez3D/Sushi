@@ -54,8 +54,11 @@
 
 ## 📸 Capturas de Pantalla
 ![Sushi-Menu](https://github.com/user-attachments/assets/8ce42ef3-b337-40c5-95fe-0544f4f4a2b9)
-![Sushi-About](https://github.com/user-attachments/assets/f6102ec1-097e-45fc-b31d-dc22630fc16a)
+![Sushi-Detail](https://github.com/user-attachments/assets/02af960e-52d5-4396-be9a-5d552e2ffd0a)
+![Add-Sushi](https://github.com/user-attachments/assets/6ffe9ff4-ccaa-4be2-8168-6ae0f038bcc4)
 ![Sushi-Gallery](https://github.com/user-attachments/assets/1944a99e-96a0-457d-ba09-a2d2a8c5970e)
 ![Gallery-Detail](https://github.com/user-attachments/assets/92869e53-1e06-4a88-8356-8a5e8cbc3926)
-![Add-Sushi](https://github.com/user-attachments/assets/6ffe9ff4-ccaa-4be2-8168-6ae0f038bcc4)
-![Sushi-Detail](https://github.com/user-attachments/assets/02af960e-52d5-4396-be9a-5d552e2ffd0a)
+![Sushi-About](https://github.com/user-attachments/assets/f6102ec1-097e-45fc-b31d-dc22630fc16a)
+
+
+
